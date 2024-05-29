@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Hello Thymeleaf</title>
+</head>
+<img>
+	<div>0</div>
+	<div th:text="${2+3}">0</div>
+	<div th:text="'age = ' + ${10+8}">0</div>
+	<div th:text="${time}">What time is it?</div>
+	<div th:text="${user}">user?</div>
+	<div th:text="${user.id}">user id?</div>
+	<div th:text="${user.name}">user name?</div>
+	<div th:text="${user.age}">user age?</div>
+	<div th:text="${user.birth}">user birth?</div>
+	<div th:text="${#dates.format(user.birth, 'yyyy-MM-dd')}">user birth?</div>
+	<hr />
+	<div th:text="${users}">users</div>
+	<hr />
+	<table border="1">
+		<tr>
+			<th>id</th><th>name</th><th>age</th><th>birth</th>
+		</tr>
+		<tr th:each="user : ${users}">
+			<td th:text="${user.id}">0</td>
+			<td th:text="${user.name}">0</td>
+			<td th:text="${user.age}">0</td>
+			<td th:text="${#dates.format(user.birth, 'yyyy-MM-dd')}">0</td>
+		</tr>
+	</table>
+	<hr />
+	Form 1 <p />
+	<form th:object="${user}">
+		id: <input type="number" th:value="*{id}" value="0" /><p />
+		name: <input type="text" th:value="*{name}" value="0" /><p />
+		age: <input type="number" th:value="*{age}" value="0" /><p />
+		birth: <input type="date" th:value="*{#dates.format(birth, 'yyyy-MM-dd')}" value="0" /><p />
+	</form>
+	<hr />
+	Form 2 <p />
+	<form th:object="${user}">
+		id: <input type="number" th:value="*{id}" value="0" /><p />
+		name: <select>
+				<option th:each="u : ${users}"
+						th:selected="${u.id} == *{id}"
+						th:value="${u.id}"
+						th:text="${u.name}" />
+			  </select><p />
+		age: <input type="checkbox"
+					th:each="u : ${users}"
+					th:checked="${u.age} >= 18"
+					th:value="${u.id}"
+					th:text="${u.age}" />
+			 <p />
+		birth: <input type="date" th:value="*{#dates.format(birth, 'yyyy-MM-dd')}" value="0" /><p />
+	</form>
+	<hr />
+	URL 1:<p />
+	<a th:href="@{https://tw.yahoo.com}" href="#" >Absolute Path</a> https://tw.yahoo.com<p/>
+	<a th:href="@{foo/demo1.html}" href="#" >Page-Relative</a> foo/demo1.html<p/>
+	<a th:href="@{/foo/demo1.html}" href="#" >Context-Relative</a> /foo/demo1.html<p/>
+	<a th:href="@{~/foo/demo1.html}" href="#" >Server-Relative</a> ~/foo/demo1.html<p/>
+	<a th:href="@{//tw.yahoo.com/index.html}" href="#" >Protocol-Relative</a> //tw.yahoo.com/index.html<p/>
+	<hr />
+	URL 2 + args:<p />
+	<a th:href="@{/demo(id=${user.id}, action=${user.name})}" href="#" >link 1 </a><p/> /psi/demo?id=2&action=Mary<p />
+	<a th:href="@{/demo(id=2, action='show')}" href="#" >link 2 </a><p/> /psi/demo?id=2&action=show<p />
+	<a th:href="@{/demo/{id}(id=3, action='show')}" href="#" >link 3 </a><p/> /psi/demo/3?action=show<p />
+	<a th:href="@{/demo/{id}/{action}(id=3, action='show')}" href="#" >link 4 </a><p/> /psi/demo/3/show<p />
+	<hr />
+	
+	<img th:src="@{/image/123.png}"></img>
+	
+</body>
+</html>

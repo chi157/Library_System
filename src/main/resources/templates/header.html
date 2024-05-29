@@ -1,0 +1,36 @@
+<header xmlns:th="http://www.thymeleaf.org" th:fragment="header">
+	<a th:href="@{/index/}" class="btn btn-warning">首頁</a>
+	<a th:href="@{/login/}" class="btn btn-success" th:if="${session.USER_SESSION} == null">登入</a>
+	<!--<a th:href="@{/test/}" class="btn btn-success" th:unless="${session.USER_SESSION} == null">測試頁面</a>-->
+	<a th:href="@{/login/logout}" class="btn btn-danger" th:unless="${session.USER_SESSION} == null">登出</a>
+	<span th:unless="${session.USER_SESSION} == null" th:text="歡迎 "></span>
+	<span th:unless="${session.USER_SESSION} == null" th:text="${session.USER_SESSION.name}"></span>
+	
+	<a th:href="@{/book-borrow/}" class="btn btn-info">書籍瀏覽</a>
+	<span th:if="${session.USER_SESSION} != null">
+		<span th:switch="${session.USER_SESSION.role.id}">
+		  <span th:case="1">
+			<!-- 管理員 -->
+			<a th:href="@{/book-manage/}" class="btn btn-success">書籍資料管理</a>
+			<a th:href="@{/publisher-manage/}" class="btn btn-success">出版社資料管理</a>
+			<a th:href="@{/reader-manage/}" class="btn btn-success">讀者資料管理</a>			
+			<a th:href="@{/staff-manage/}" class="btn btn-success">員工資料管理</a>			
+			<a th:href="@{/record-manage/}" class="btn btn-success">借閱資料管理</a>
+		  </span>
+		  <span th:case="2">
+			<!-- 一般職員 -->			
+			<a th:href="@{/book-manage/}" class="btn btn-success">書籍資料管理</a>
+			<a th:href="@{/reader-manage/}" class="btn btn-success">讀者資料管理</a>			
+			<a th:href="@{/record-manage/}" class="btn btn-success">全館借閱資料管理</a>
+		  </span>
+		  <span th:case="3">
+			<!-- 讀者 -->
+		  </span>
+		  <span th:case="*">
+			<!-- 其他 -->
+		  </span>
+		</span>
+		<!-- 大家都可以借書還書 -->
+		<a th:href="@{/book-borrow-record/}" class="btn btn-primary">個人借閱紀錄</a>
+	</span>
+</header>

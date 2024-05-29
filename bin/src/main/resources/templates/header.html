@@ -1,0 +1,17 @@
+<header xmlns:th="http://www.thymeleaf.org" th:fragment="header">
+	<a th:href="@{/index/}" class="btn btn-warning">首頁</a>
+	<a th:href="@{/login/}" class="btn btn-success" th:if="${session.USER_SESSION} == null">登入</a>
+	<a th:href="@{/test/}" class="btn btn-success" th:unless="${session.USER_SESSION} == null">測試頁面</a>
+	<a th:href="@{/login/logout}" class="btn btn-danger" th:unless="${session.USER_SESSION} == null">登出</a>
+	
+	<div th:if="${session.USER_SESSION} != null">
+		<div th:switch="${session.USER_SESSION.role.id}">
+		  <p th:case="1">管理員</p>
+		  <p th:case="2">一般職員</p>
+		  <p th:case="3">讀者</p>
+		  <p th:case="*">其他</p>
+		</div>
+	</div>
+	
+	<p />
+</header>
