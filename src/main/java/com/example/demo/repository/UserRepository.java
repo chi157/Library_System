@@ -6,9 +6,12 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.example.demo.entity.Book;
+import com.example.demo.entity.Publisher;
 import com.example.demo.entity.Role;
 import com.example.demo.entity.User;
 
@@ -33,4 +36,9 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	@Modifying
 	@Query(value = "INSERT INTO USER(account, name, password, role_id, address, birth, gender, phone) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", nativeQuery = true)
 	public void saveStaff(String account, String name, String password, Long role, String address, Date birth, String gender, String phone);
+	
+	// jpql
+	@Query("SELECT u FROM User u WHERE (:account IS NULL OR u.account LIKE %:account%) AND (:name IS NULL OR u.name LIKE %:name%) AND (:role IS NULL OR u.role = :role)")
+	List<User> findBySearchCriteria(@Param("account") String account, @Param("name") String name, @Param("role") Role role);
+		
 }

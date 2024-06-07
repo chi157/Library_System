@@ -1,15 +1,19 @@
 package com.example.demo.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.entity.Book;
 import com.example.demo.entity.Publisher;
+import com.example.demo.entity.Role;
 import com.example.demo.entity.User;
 import com.example.demo.repository.BookRepository;
 import com.example.demo.repository.PublisherRepository;
@@ -26,9 +30,24 @@ public class ReaderController {
 	@Autowired
 	RoleRepository repository;
 	
-	@RequestMapping("/") 
+	@GetMapping("/") 
 	public String index(Model model) {
+		model.addAttribute("user", new User());
 		model.addAttribute("users", userRepository.findAllByReader());
+		return "reader-manage";
+	}
+	@PostMapping("/search")
+	public String search(@ModelAttribute User user, Model model) {
+		model.addAttribute("users", null);
+		Role role = repository.getById(3l);
+		
+		List<User> users = userRepository.findBySearchCriteria(
+				user.getAccount().isEmpty() ? null : "%" + user.getAccount() + "%", 
+				user.getName().isEmpty() ? null : "%" + user.getName() + "%",
+				role
+			);
+		model.addAttribute("users", users);
+		//return "redirect:/book-manage/";
 		return "reader-manage";
 	}
 	
