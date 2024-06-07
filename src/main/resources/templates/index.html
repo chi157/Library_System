@@ -14,7 +14,7 @@
 <body>
 	<div class="container my-2">
 		<!-- Header -->
-		<div th:include="header :: header"></div><!-- 檔名(不用html) ::  th:fragment名稱 -->
+		<div th:insert="~{header :: header}"></div><!-- 檔名(不用html) ::  th:fragment名稱 -->
 		<!-- Content -->
 		<h1>圖書館管理系統</h1>
 		嗨！
@@ -22,7 +22,7 @@
 			<img alt="圖片" th:src="@{/image/lib_ms.jpeg}" height="450">
 		</div>
 		<!-- Footer -->
-		<div th:include="footer :: footer"></div>
+		<div th:insert="~{footer :: footer}"></div>
 	</div>
 </body>
 </html>

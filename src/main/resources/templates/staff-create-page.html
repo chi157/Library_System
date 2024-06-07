@@ -9,7 +9,7 @@
 <body>
 	<div class="container my-2">
 		<!-- Header -->
-		<div th:include="header :: header"></div><!-- 檔名(不用html) ::  th:fragment名稱 -->
+		<div th:insert="~{header :: header}"></div><!-- 檔名(不用html) ::  th:fragment名稱 -->
 		<!-- Content -->
 		<h1>員工資料新增</h1>
 		<form action="#" th:action="@{/staff-manage/create-staff}" th:object="${user}" method="post">
@@ -54,7 +54,7 @@
 			<input type="submit" value="新增員工" class="btn btn-primary" />
 		</form>
 		<!-- Footer -->
-		<div th:include="footer :: footer"></div>
+		<div th:insert="~{footer :: footer}"></div>
 	</div>
 </body>
 </html>

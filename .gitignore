@@ -37,3 +37,4 @@ bin/src/main/resources/application.yml
 .dbeaver/credentials-config.json
 src/main/java/com/example/demo/controller/BookBorrowController.java
 src/main/java/com/example/demo/controller/BookBorrowRecordController.java
+src/main/java/com/example/demo/controller/BookController.java

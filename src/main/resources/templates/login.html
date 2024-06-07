@@ -29,7 +29,7 @@
 	<input type="hidden" id="login_state" name="login_state" th:value="${login_state}"/>
 	<div class="container my-2">
 		<!-- Header -->
-		<div th:include="header :: header"></div><!-- 檔名(不用html) ::  th:fragment名稱 -->
+		<div th:insert="~{header :: header}"></div><!-- 檔名(不用html) ::  th:fragment名稱 -->
 		<!-- Content -->
 		
 		<h1>使用者登入</h1>
@@ -51,7 +51,7 @@
 		<button id="btn21" class="btn btn-primary" onclick="login21()">張謦麒登入</button>
 		<button id="btn30" class="btn btn-primary" onclick="login30()">吳易陞登入</button>
 		<!-- Footer -->
-		<div th:include="footer :: footer"></div>
+		<div th:insert="~{footer :: footer}"></div>
 	</div>
 </body>
 </html>
