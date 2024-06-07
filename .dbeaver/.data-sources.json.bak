@@ -1,18 +1,35 @@
 {
 	"folders": {},
 	"connections": {
-		"mysql8-18e49d5af83-314d6a07d2ebab93": {
+		"mysql8-18e49dc5196-69693779153fd905": {
 			"provider": "mysql",
 			"driver": "mysql8",
-			"name": "web",
+			"name": "sys",
 			"save-password": true,
 			"configuration": {
 				"host": "localhost",
 				"port": "3306",
-				"database": "web",
-				"url": "jdbc:mysql://localhost:3306/web",
+				"database": "sys",
+				"url": "jdbc:mysql://localhost:3306/sys",
 				"configurationType": "MANUAL",
 				"home": "mysql_client",
+				"type": "dev",
+				"closeIdleConnection": true,
+				"auth-model": "native"
+			}
+		},
+		"mysql8-18fc88edac4-3567238c505a10af": {
+			"provider": "mysql",
+			"driver": "mysql8",
+			"name": "libms",
+			"save-password": true,
+			"configuration": {
+				"host": "localhost",
+				"port": "3306",
+				"database": "libms",
+				"url": "jdbc:mysql://localhost:3306/libms",
+				"configurationType": "MANUAL",
+				"home": "MySQL Server 8.0",
 				"type": "dev",
 				"closeIdleConnection": true,
 				"auth-model": "native"
@@ -21,9 +38,9 @@
 	},
 	"connection-types": {
 		"dev": {
-			"name": "Development",
+			"name": "开发",
 			"color": "255,255,255",
-			"description": "Regular development database",
+			"description": "常规开发数据库",
 			"auto-commit": true,
 			"confirm-execute": false,
 			"confirm-data-change": false,
