@@ -78,7 +78,6 @@ public class BookController {
 		model.addAttribute("books", null);
 		model.addAttribute("publishers", publisherRepository.findAll());
 		
-		//String condition = BookRepository.buildQueryCondition(book.getISBN(), book.getAuthor(), book.getName(), book.getPublisher().getId());
 		List<Book> books = bookRepository.findBySearchCriteria(
 			    book.getISBN().isEmpty() ? null : "%" + book.getISBN() + "%",
 			    book.getAuthor().isEmpty() ? null : "%" + book.getAuthor() + "%", 
