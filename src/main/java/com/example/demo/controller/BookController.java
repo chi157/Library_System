@@ -63,6 +63,8 @@ public class BookController {
 	
 	@RequestMapping("/") 
 	public String index(Model model) {
+		model.addAttribute("book", new Book());
+		model.addAttribute("publishers", publisherRepository.findAll());
 		model.addAttribute("books", bookRepository.findAllAndOrderByActivate());
 		return "book-manage";
 	}

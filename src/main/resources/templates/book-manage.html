@@ -11,6 +11,29 @@
 		<div th:include="header :: header"></div><!-- 檔名(不用html) ::  th:fragment名稱 -->
 		<!-- Content -->
 		<h1>書籍資料管理</h1>
+		<form class="row g-3" action="#" th:action="@{/book-manage/}" th:object="${book}" method="post" enctype="multipart/form-data">
+            <div class="col-md-6">
+                <label>書籍名稱:</label>
+                <input type="text" th:field="*{name}" id="name" class="form-control" placeholder="請輸入書籍名稱">
+            </div>
+            <div class="col-md-6">
+                <label>作者:</label>
+                <input type="text" th:field="*{author}" id="author" class="form-control" placeholder="請輸入作者">
+            </div>
+            <div class="col-md-6">
+                <label>ISBN:</label>
+                <input type="text" th:field="*{ISBN}" id="ISBN" class="form-control" placeholder="請輸入ISBN">
+            </div>
+            <div class="col-md-6">
+                <label>出版社名稱:</label>
+                <select class="form-control select2" th:field="*{publisher.id}" id="publisher.id">
+                	<option value="">===請選擇出版社===</option>
+                    <option th:each="publisher:${publishers}" th:value="${publisher.id}" th:text="${publisher.name}"></option>
+                </select>
+            </div>
+            <input type="submit" value="查詢書籍" class="btn btn-info col-md-12" />
+        </form>
+        <br>
 		<a th:href="@{/book-manage/create-page}" class="btn btn-primary">書籍資料新增</a>
 		<h2>全部書籍列表</h2>
 		<table border="1" class="table table-striped table-reposive-md">
