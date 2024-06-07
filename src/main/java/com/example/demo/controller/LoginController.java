@@ -44,8 +44,8 @@ public class LoginController {
 		System.out.println(user.getPassword());
 		try {
 			User loggined_user = userRepository.findByAccountAndPassword(user.getAccount(), user.getPassword());
-			System.out.println(loggined_user.getAccount());
-			System.out.println(loggined_user.getPassword());
+			//System.out.println(loggined_user.getAccount());
+			//System.out.println(loggined_user.getPassword());
 			HttpSession session = request.getSession();
 			session.setAttribute("USER_SESSION", loggined_user);
 		} catch (Exception e) {

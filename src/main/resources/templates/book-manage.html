@@ -11,7 +11,7 @@
 		<div th:insert="~{header :: header}"></div><!-- 檔名(不用html) ::  th:fragment名稱 -->
 		<!-- Content -->
 		<h1>書籍資料管理</h1>
-		<form class="row g-3" action="#" th:action="@{/book-manage/search}" th:object="${book}" method="post" enctype="multipart/form-data">
+		<form class="row g-3" action="#" th:action="@{/book-manage/search}" th:object="${book}" method="post">
             <div class="col-md-6">
                 <label>書籍名稱:</label>
                 <input type="text" th:field="*{name}" id="name" class="form-control" placeholder="請輸入書籍名稱">

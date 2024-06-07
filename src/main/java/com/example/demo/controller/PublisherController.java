@@ -21,7 +21,7 @@ public class PublisherController {
 	@Autowired
 	PublisherRepository publisherRepository;
 	
-	@RequestMapping("/") 
+	@GetMapping("/") 
 	public String index(Model model) {
 		model.addAttribute("publisher", new Publisher());
 		List<Publisher> publishers = publisherRepository.findAll();

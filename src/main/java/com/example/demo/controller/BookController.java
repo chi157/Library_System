@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -12,7 +14,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
+
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -61,11 +65,28 @@ public class BookController {
 	@Autowired
 	BookUserRepository bookUserRepository;
 	
-	@RequestMapping("/") 
+	@GetMapping({"/"}) 
 	public String index(Model model) {
 		model.addAttribute("book", new Book());
-		model.addAttribute("publishers", publisherRepository.findAll());
 		model.addAttribute("books", bookRepository.findAllAndOrderByActivate());
+		model.addAttribute("publishers", publisherRepository.findAll());
+		return "book-manage";
+	}
+	
+	@PostMapping("/search")
+	public String search(@ModelAttribute Book book, Model model) {
+		model.addAttribute("books", null);
+		model.addAttribute("publishers", publisherRepository.findAll());
+		
+		//String condition = BookRepository.buildQueryCondition(book.getISBN(), book.getAuthor(), book.getName(), book.getPublisher().getId());
+		List<Book> books = bookRepository.findBySearchCriteria(
+			    book.getISBN().isEmpty() ? null : "%" + book.getISBN() + "%",
+			    book.getAuthor().isEmpty() ? null : "%" + book.getAuthor() + "%", 
+			    book.getName().isEmpty() ? null : "%" + book.getName() + "%",
+			    book.getPublisher().getId() == null ? null : book.getPublisher()
+			);
+		model.addAttribute("books", books);
+		//return "redirect:/book-manage/";
 		return "book-manage";
 	}
 	
@@ -146,5 +167,7 @@ public class BookController {
 		bookRepository.deleteById(id);
 		return "redirect:/book-manage/";
 	}
+	
+	
 	
 }

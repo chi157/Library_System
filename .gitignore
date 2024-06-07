@@ -38,3 +38,8 @@ bin/src/main/resources/application.yml
 src/main/java/com/example/demo/controller/BookBorrowController.java
 src/main/java/com/example/demo/controller/BookBorrowRecordController.java
 src/main/java/com/example/demo/controller/BookController.java
+src/main/java/com/example/demo/repository/BookRepository.java
+Scripts/Script.sql
+Scripts/Script-1.sql
+.dbeaver/project-metadata.json
+.dbeaver/.project-metadata.json.bak
