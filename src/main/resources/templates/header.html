@@ -15,13 +15,16 @@
 			<a th:href="@{/publisher-manage/}" class="btn btn-success">出版社資料管理</a>
 			<a th:href="@{/reader-manage/}" class="btn btn-success">讀者資料管理</a>			
 			<a th:href="@{/staff-manage/}" class="btn btn-success">員工資料管理</a>			
-			<a th:href="@{/record-manage/}" class="btn btn-success">借閱資料管理</a>
+			<a th:href="@{/record-manage/}" class="btn btn-success">全館借閱資料管理</a>			
+			<a th:href="@{/activity-manage/}" class="btn btn-success">圖書館活動管理</a>		
+			<a th:href="@{/lib-manage/}" class="btn btn-success">圖書館資訊管理</a>
 		  </span>
 		  <span th:case="2">
 			<!-- 一般職員 -->			
 			<a th:href="@{/book-manage/}" class="btn btn-success">書籍資料管理</a>
 			<a th:href="@{/reader-manage/}" class="btn btn-success">讀者資料管理</a>			
-			<a th:href="@{/record-manage/}" class="btn btn-success">全館借閱資料管理</a>
+			<a th:href="@{/record-manage/}" class="btn btn-success">全館借閱資料管理</a>			
+			<a th:href="@{/activity-manage/}" class="btn btn-success">圖書館活動管理</a>
 		  </span>
 		  <span th:case="3">
 			<!-- 讀者 -->
