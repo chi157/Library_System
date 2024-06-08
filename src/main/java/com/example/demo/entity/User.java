@@ -52,6 +52,9 @@ public class User{
 	@Column
 	private String address;
 	
+	@Column
+	private String email;
+	
 	@JoinColumn(name = "role_id") 
 	@ManyToOne
 	private Role role;
@@ -139,6 +142,14 @@ public class User{
 
 	public void setRecords(List<BookUser> records) {
 		this.records = records;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 	
