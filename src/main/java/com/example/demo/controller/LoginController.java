@@ -26,7 +26,7 @@ public class LoginController {
 	private UserRepository userRepository;
 
 	 
-	@RequestMapping("/") 
+	@GetMapping("/") 
     public String index(Model model, HttpSession session) {
 		User user =(User) session.getAttribute("USER_SESSION");
 		if (user == null) {
