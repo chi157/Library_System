@@ -8,9 +8,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.demo.Passwrod;
 import com.example.demo.entity.User;
 import com.example.demo.repository.UserRepository;
 
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
  
@@ -52,12 +54,33 @@ public class UserInfoController {
 	}
 	@GetMapping("/pwd/") // 修改密碼畫面 
     public String edit_pwd_page(Model model, HttpSession session) {
-		User user =(User) session.getAttribute("USER_SESSION");
-		if (user == null) {
-			user = new User();
-		}
-		model.addAttribute("user", user);
+		Passwrod password = new Passwrod();
+		model.addAttribute("password", password);
 		//model.addAttribute("user", new User());
         return "user-info-pwd";
+    }
+	@PostMapping("/pwd/edit") // 修改密碼
+    public String edit_pwd(Passwrod passwrod,Model model, HttpSession session, HttpServletRequest request) {
+		User user =(User) session.getAttribute("USER_SESSION");
+		if(passwrod.getOriginal_pwd().equals(user.getPassword())) {
+			if(passwrod.getNew_pwd().equals(passwrod.getCheck_pwd())) {
+				user.setPassword(passwrod.getNew_pwd());
+				userRepository.save(user);
+				model.addAttribute("edit_state", "修改成功");
+				request.getSession().invalidate();
+				return "index";
+			}else {
+				model.addAttribute("edit_state", "修改失敗1");
+				Passwrod password = new Passwrod();
+				model.addAttribute("password", password);
+				return "user-info-pwd";
+			}
+		}else {
+			model.addAttribute("edit_state", "修改失敗2");
+			Passwrod password = new Passwrod();
+			model.addAttribute("password", password);
+			return "user-info-pwd";
+		}
+		//model.addAttribute("user", new User());
     }
 }
