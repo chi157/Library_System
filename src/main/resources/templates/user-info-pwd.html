@@ -20,16 +20,16 @@
 		<!-- Content -->
 		<h1>密碼修改</h1>
 		<form th:action="@{/user-info/pwd/edit}" th:object="${password}" method="post" class="row g-3">
-			<div class="form-group col-md-6">
+			<div class="form-group col-md-12">
 				<label>請輸入原始密碼：</label>
 				<input type="password" th:field="*{original_pwd}" id="original_pwd" class="form-control" placeholder="請輸入原始密碼">
 			</div>
 			<div class="form-group col-md-6">
-				<label>請輸入新密碼:</label>
+				<label>請輸入新密碼：</label>
 				<input type="password" th:field="*{new_pwd}" id="new_pwd" class="form-control" placeholder="請輸入新密碼">
 			</div>
 			<div class="form-group col-md-6">
-				<label>請再次輸入新密碼:</label>
+				<label>請再次輸入新密碼：</label>
 				<input type="password" th:field="*{check_pwd}" id="check_pwd" class="form-control" placeholder="請再次輸入新密碼">
 			</div>
 			
