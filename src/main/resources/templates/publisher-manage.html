@@ -33,7 +33,7 @@
 			</thead>
 			<tbody>
 				<tr th:each="publisher : ${publishers}">
-					<td th:text="${publisher.id}"></td>
+					<td th:text="${publisherStat.index+1}"></td>
 					<td th:text="${publisher.name}"></td>
 					<td><a th:href="@{/publisher-manage/edit/{id}(id=${publisher.id})}" class="btn btn-primary">編輯</a></td>
 					<td><a th:href="@{/publisher-manage/delete/{id}(id=${publisher.id})}" class="btn btn-danger">刪除</a></td>

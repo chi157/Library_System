@@ -51,7 +51,7 @@
 			</thead>
 			<tbody>
 				<tr th:each="book : ${books}">
-					<td th:text="${book.id}"></td>
+					<td th:text="${bookStat.index+1}"></td>
 					<td th:text="${book.name}"></td>
 					<td th:text="${book.author}"></td>
 					<td th:text="${book.ISBN}"></td>
