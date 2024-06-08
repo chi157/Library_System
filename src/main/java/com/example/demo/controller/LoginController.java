@@ -39,22 +39,30 @@ public class LoginController {
 	
 	@PostMapping("/check")
 	public String create(Model model, User user,  HttpServletRequest request) {
-
-		System.out.println(user.getAccount());
-		System.out.println(user.getPassword());
+		if(model.getAttribute("login_state") != null){
+			model.addAttribute("login_state", "");
+		}
+		//System.out.println(user.getAccount());
+		//System.out.println(user.getPassword());
 		try {
 			User loggined_user = userRepository.findByAccountAndPassword(user.getAccount(), user.getPassword());
 			//System.out.println(loggined_user.getAccount());
 			//System.out.println(loggined_user.getPassword());
+			if (loggined_user == null) {
+				model.addAttribute("login_state", "登入失敗");
+				System.out.println("帳號密碼輸入錯誤");
+				return "login";
+			}
 			HttpSession session = request.getSession();
 			session.setAttribute("USER_SESSION", loggined_user);
 		} catch (Exception e) {
 			// TODO: handle exception
 			//e.printStackTrace();
 			model.addAttribute("login_state", "登入失敗");
-			System.out.println("login error");
+			System.out.println("帳號密碼輸入錯誤");
 			return "login";
 		}
+		System.out.println("帳密輸入成功");
 		model.addAttribute("login_state", "登入成功");
 		return "index";
 	}
