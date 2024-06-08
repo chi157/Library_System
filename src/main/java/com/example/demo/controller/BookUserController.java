@@ -6,12 +6,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.example.demo.entity.User;
 import com.example.demo.repository.BookRepository;
 import com.example.demo.repository.BookStateRepository;
 import com.example.demo.repository.BookUserRepository;
 
-import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/record-manage")

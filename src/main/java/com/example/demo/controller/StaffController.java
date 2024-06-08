@@ -8,11 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.example.demo.entity.Book;
-import com.example.demo.entity.Publisher;
+
 import com.example.demo.entity.User;
-import com.example.demo.repository.BookRepository;
-import com.example.demo.repository.PublisherRepository;
 import com.example.demo.repository.RoleRepository;
 import com.example.demo.repository.UserRepository;
 
@@ -26,7 +23,7 @@ public class StaffController {
 	@Autowired
 	RoleRepository repository;
 	
-	@RequestMapping("/") 
+	@GetMapping("/") 
 	public String index(Model model) {
 		model.addAttribute("users", userRepository.findAllByStaff());
 		return "staff-manage";

@@ -10,8 +10,6 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.example.demo.entity.Book;
-import com.example.demo.entity.Publisher;
 import com.example.demo.entity.Role;
 import com.example.demo.entity.User;
 
