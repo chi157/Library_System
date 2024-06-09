@@ -12,7 +12,7 @@
 		<!-- Content -->
 		<h1>出版社資料管理</h1>
 		<h2>新增出版社</h2>
-		<form action="#" th:action="@{/publisher-manage/}" th:object="${publisher}" method="post">
+		<form  th:action="@{/publisher-manage/}" th:object="${publisher}" method="post">
 			<div class="form-group">
 				<label>出版社名稱:</label>
 				<input type="text" th:field="*{name}" id="name" class="form-control" placeholder="請輸入出版社名稱">
