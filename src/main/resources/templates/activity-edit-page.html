@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>圖書館管理系統</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script>
+        function selectImgFile(files) {
+            if (!files.length) {
+                return false;
+            }
+
+            let file = files[0];
+            let reader = new FileReader();
+            reader.onload = function () {
+                document.getElementById('showImg').src = this.result;
+            };
+
+            reader.readAsDataURL(file);
+        }
+    </script>
+</head>
+<body>
+    <div class="container my-2">
+        <!-- Header -->
+        <div th:insert="~{header :: header}"></div><!-- 檔名(不用html) ::  th:fragment名稱 -->
+        <!-- Content -->
+        <h1>圖書館活動修改</h1>
+        <form class="row g-3" th:action="@{/activity-manage/{id}(id=${activity.id})}" th:object="${activity}" method="post" enctype="multipart/form-data">
+            <div class="form-group col-md-6">
+                <label>活動名稱：</label>
+                <input type="text" th:field="*{name}" id="name" class="form-control" placeholder="請輸入活動名稱">
+            </div>
+            <div class="form-group col-md-6">
+                <label>可參與活動人：</label>
+                <input type="text" th:field="*{participant}" id="participant" class="form-control" placeholder="請輸入參與活動人">
+            </div>
+            <div class="form-group col-md-6">
+                <label>活動開始日期：</label>
+                <input type="datetime-local" th:field="*{startDateTime}"  th:value="${#temporals.format(activity.startDateTime, 'yyyy-MM-dd''T''HH:mm')}" id="startDateTime" class="form-control" />
+            </div>
+            <div class="form-group col-md-6">
+                <label>活動結束日期：</label>
+                <input type="datetime-local" th:field="*{endDateTime}"  th:value="${#temporals.format(activity.endDateTime, 'yyyy-MM-dd''T''HH:mm')}" id="endDateTime" class="form-control" />
+            </div>
+            
+            <div class="mb-3 col-md-12">
+			  <label for="exampleFormControlTextarea1" class="form-label">活動簡介：</label>
+			  <textarea class="form-control" th:field="*{description}" id="description" rows="10"></textarea>
+			</div>
+            <div class="mb-3 col-md-12">
+                <label for="formFile" class="form-label">活動海報：</label>
+                <input class="form-control" type="file" id="picture" name="picture" onchange="selectImgFile(this.files)">
+                <br>
+                <img id="showImg" th:src="@{${@imageUtils.getBase64Image(activity.picture)}}" width="500px" class="img-thumbnail"></img>
+            </div>
+            <input type="submit" value="修改活動" class="btn btn-primary" />
+        </form>
+        <!-- Footer -->
+        <div th:insert="~{footer :: footer}"></div>
+    </div>
+</body>
+</html>
