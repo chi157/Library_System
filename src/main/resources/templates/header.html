@@ -7,6 +7,7 @@
 	<span th:unless="${session.USER_SESSION} == null" th:text="${session.USER_SESSION.name}"></span>
 	
 	<a th:href="@{/book-borrow/}" class="btn btn-info">書籍瀏覽</a>
+	<a th:href="@{/about-library/}" class="btn btn-info">關於圖書館</a>
 	<span th:if="${session.USER_SESSION} != null">
 		<span th:switch="${session.USER_SESSION.role.id}">
 		  <span th:case="1">
@@ -33,7 +34,7 @@
 			<!-- 其他 -->
 		  </span>
 		</span>
-		<!-- 大家都可以的功能 -->
+		<!-- 有登入的話大家都可以的功能 -->
 		<a th:href="@{/book-borrow-record/}" class="btn btn-primary">個人借閱紀錄</a>
 		<a th:href="@{/user-info/}" class="btn btn-primary">個人資料</a>
 	</span>
