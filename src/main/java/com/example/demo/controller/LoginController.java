@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.entity.User;
+import com.example.demo.repository.ActivityRepository;
+import com.example.demo.repository.LibraryRepository;
 import com.example.demo.repository.UserRepository;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -21,7 +23,9 @@ public class LoginController {
  
 	@Autowired
 	private UserRepository userRepository;
-
+	
+	@Autowired
+	ActivityRepository activityRepository;
 	 
 	@GetMapping("/") 
     public String index(Model model, HttpSession session) {
@@ -36,6 +40,7 @@ public class LoginController {
 	
 	@PostMapping("/check")
 	public String create(Model model, User user,  HttpServletRequest request) {
+		
 		if(model.getAttribute("login_state") != null){
 			model.addAttribute("login_state", "");
 		}
@@ -61,6 +66,7 @@ public class LoginController {
 		}
 		System.out.println("帳密輸入成功");
 		model.addAttribute("login_state", "登入成功");
+		model.addAttribute("activities", activityRepository.findAll());
 		return "index";
 	}
 	
