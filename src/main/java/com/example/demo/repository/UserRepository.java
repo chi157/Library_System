@@ -27,13 +27,13 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	public List<User> findAllByStaff();
 	
 	@Modifying
-	@Query(value = "INSERT INTO USER(account, name, password, role_id, address, birth, gender, phone) VALUES (?, ?, ?, 3, ?, ?, ?, ?)", nativeQuery = true)
-	public void saveReader(String account, String name, String password, String address, Date birth, String gender, String phone);
+	@Query(value = "INSERT INTO USER(account, name, password, role_id, address, birth, gender, phone, email) VALUES (?, ?, ?, 3, ?, ?, ?, ?, ?)", nativeQuery = true)
+	public void saveReader(String account, String name, String password, String address, Date birth, String gender, String phone, String email);
 	
 
 	@Modifying
-	@Query(value = "INSERT INTO USER(account, name, password, role_id, address, birth, gender, phone) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", nativeQuery = true)
-	public void saveStaff(String account, String name, String password, Long role, String address, Date birth, String gender, String phone);
+	@Query(value = "INSERT INTO USER(account, name, password, role_id, address, birth, gender, phone, email) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", nativeQuery = true)
+	public void saveStaff(String account, String name, String password, Long role, String address, Date birth, String gender, String phone, String email);
 	
 	// jpql
 	@Query("SELECT u FROM User u WHERE (:account IS NULL OR u.account LIKE %:account%) AND (:name IS NULL OR u.name LIKE %:name%) AND (:role IS NULL OR u.role = :role)")

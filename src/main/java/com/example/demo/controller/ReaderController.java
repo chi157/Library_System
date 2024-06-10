@@ -57,7 +57,7 @@ public class ReaderController {
 
 	@PostMapping("/create-reader")
 	public String create_reader(User user) {
-		userRepository.saveReader(user.getAccount(), user.getName(), user.getAccount(), user.getAddress(), user.getBirth(), user.getGender(), user.getPhone());
+		userRepository.saveReader(user.getAccount(), user.getName(), user.getAccount(), user.getAddress(), user.getBirth(), user.getGender(), user.getPhone(), user.getEmail());
 		return "redirect:/reader-manage/";
 	}
 
