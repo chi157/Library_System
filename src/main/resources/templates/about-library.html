@@ -18,6 +18,7 @@
 		<!-- Header -->
 		<div th:insert="~{header :: header}"></div><!-- 檔名(不用html) ::  th:fragment名稱 -->
 		<!-- Content -->
+		<br>
 		<form th:object="${library}" class="row g-3">
 			<h1 th:text="*{name}"></h1>
 			
