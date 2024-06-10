@@ -38,3 +38,14 @@ Hibernate是一個開源的對象關係映射(ORM)框架,它為Java語言提供�
 
 ## 開發輔助工具
 ![image](5.jpg)
+### 關於Spring Tool 4
+Spring Tool 4(STS)是一個基於Eclipse平台構建的開發工具,專門用於簡化開發Spring應用程序的過程。以下是STS的一些主要特點:
+1. 項目創建向導：STS內置了Spring項目創建向導,可以輕鬆創建各種類型的Spring項目,包括普通Spring MVC、Spring Boot等。
+2. Spring支持：STS對Spring框架提供了全面支持,包括自動完成、快捷鍵、工具條等,幫助開發者提高編碼效率。
+3. Spring Boot支持：STS深度整合了Spring Boot,可以輕鬆創建、運行、調試和部署Spring Boot應用。
+4. Bean自動配置：STS能自動識別和配置Spring Bean,幫助管理Bean的依賴關係。
+5. 調試支持：STS內置了方便的調試功能,支持在服務器中調試Spring應用。
+6. 編輯器功能：STS編輯器針對Spring XML和Java配置提供了智能提示、高亮、格式化等功能。
+7. Cloud支持：STS還集成了對Spring Cloud的支持,簡化了開發基於云的應用。
+
+STS將Eclipse和Spring緊密結合,為Spring開發者提供了一個功能強大且易用的工具,大大降低了Spring開發的門檻和複雜性。無論是個人開發還是企業級項目,都可以考慮使用STS。
