@@ -1,22 +1,17 @@
 # Library Management System
 
 ## 簡介
-這是一個用Java開發的圖書館管理系統
+這是一個用Java開發的圖書館管理系統，系統使用者分為未登入者、讀者、圖書館職員以及管理者。不同使用者權限將有不同之功能。系統包含基本書籍、讀者、出版社、借閱等管理功能，以及額外功能如活動管理、輪播展示、Email寄信通知等等。
 
 ## 前後端開發架構
 ![image](4.jpg)
 ### 關於Spring Boot
 Spring Boot是一個建立在Spring框架之上的開源專案,旨在簡化Spring應用程式的初始搭建和開發過程。它的主要特點包括:
-自動配置 (Auto Configuration)
-Spring Boot會自動根據你加入的jar包來配置應用程式,無需進行過多手動設定。
-內嵌的Tomcat、Jetty或Undertow容器
-Spring Boot內嵌了常用的servlet容器,無需部署到外部容器中。
-啟動器 (Starter)
-提供一系列方便的啟動器(Starter),只需在專案中加入對應啟動器,即可獲得所需的所有相關依賴。
-監控和管理
-Spring Boot專案內建了actuator模組,可以用來監控應用程式的運行情況。
-外部化配置
-允許我們將配置信息寫在不同的地方,例如本地文件、環境變量等。
+1. 自動配置 (Auto Configuration)：Spring Boot會自動根據你加入的jar包來配置應用程式,無需進行過多手動設定。
+2. 內嵌的Tomcat、Jetty或Undertow容器：Spring Boot內嵌了常用的servlet容器,無需部署到外部容器中。
+3. 啟動器 (Starter)：提供一系列方便的啟動器(Starter),只需在專案中加入對應啟動器,即可獲得所需的所有相關依賴。
+4. 監控和管理：Spring Boot專案內建了actuator模組,可以用來監控應用程式的運行情況。
+5. 外部化配置：允許我們將配置信息寫在不同的地方,例如本地文件、環境變量等。
 
 ### 關於Thymeleaf
 Thymeleaf是一種用於Web和非Web環境的modern server-side Java template engine。它的主要特點包括:
